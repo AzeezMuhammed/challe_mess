@@ -1,0 +1,168 @@
+:*,::before,::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	
+}
+body{
+	min-height: 100vh;
+	display: grid;
+	place-content: center;
+	background: linear-gradient(45deg, purple, skyblue);
+	color: white;
+	font-family: system-ui;
+	font-size: 1rem;
+}
+
+.ticket-sales-container {
+
+	& label {
+		color: #00000070;
+		font-size: 0.9rem;
+		display: block;
+		margin-bottom: .5rem;	
+	}
+	
+	& > div{
+			display: grid;
+			grid-template-columns: 100px 1fr;
+			gap: 1rem;
+			border-radius: 10px;
+			border: 1px solid #00000050;
+		background: #00000030;
+			padding: 0.75rem 1.25rem;
+	}
+	
+}
+
+
+select {
+  appearance: none;
+  background: transparent;
+  border: none;
+	outline: none;
+  padding: 0 .5rem 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+	color: inherit;
+}
+select::-ms-expand {
+  display: none;
+}
+
+.select {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+  max-width: 100%;
+	border: 1px solid #00000050;
+	background: #00000060;
+	height: 2rem;
+	padding:.25rem 1rem;
+	border-radius: 5px;
+}
+.select:focus-within{
+	border-color: #FFFFFF70;
+}
+.select select {
+  width: 100%;
+}
+.select select,
+.select::after {
+  grid-area: select;
+}
+/* drop-down arrow */
+.select:not(._select--multiple)::after {
+  content: "";
+  justify-self: end;
+  margin-right: 0;
+  width: 0.8em;
+  height: 0.5em;
+  background-color: #007bff;
+  -webkit-clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+#add-to-cart {
+ 	white-space: nowrap;
+	padding:.25rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+	outline: none;
+	border-radius: 5px;
+	transition: background 300ms ease-in-out;
+	cursor: pointer;
+}
+#add-to-cart:disabled{
+	opacity: 30%;
+	pointer-events: none;
+}
+#add-to-cart:focus-visible,
+#add-to-cart:hover{
+	background-color: #0353a9;
+}
+#error-message {
+  position: fixed; 
+  z-index: 1;
+	inset: 0;
+	margin: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+	backdrop-filter: blur(4px);
+	opacity: 0;
+	scale: 0%;
+	transition: 300ms ease-in-out;
+	display:grid;
+	place-content: center;
+	pointer-events: none;
+	
+	& > div{
+		position: relative;
+		transition: 500ms ease-in-out 300ms;
+		translate: 0 1000px;
+		
+		opacity: 0;
+		background: black;
+		padding: .75rem 2rem;
+		border-radius: 10px;
+		color: white;
+		border:1px solid rgba(255, 0, 0, .25);
+		display: flex;
+		align-items: center;
+		gap: .75rem;
+		& > svg {
+			width: 1.5rem;
+		}
+	}
+	
+	&.show-me{
+		opacity: 100%;
+		scale: 100%;
+		pointer-events: auto;
+	}	
+	&.show-me > div{
+		translate: 0;
+		opacity: 100%;
+	}
+	& button{
+		border: none;
+		outline: none;
+background: transparent;
+		position: absolute;
+		top: -1rem;
+		right: -1rem;
+		color: #FFF;
+		font-size: 1.5rem;
+		cursor: pointer;
+		transition: scale 300ms ease-in-out;
+	}
+		& button:hover,
+		& button:focus-visible{
+			scale: 125%;
+	}
+}
